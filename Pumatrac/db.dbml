@@ -1,0 +1,196 @@
+Table calendar {
+    id integer [pk, not null]
+    plannedTime                       integer                     
+    startTime                         integer                     
+    endTime                           integer                     
+    duration                          integer [not null]           
+    mode                              text                        
+    completedWorkoutId                text                        
+    opportunity_id                    text                        
+    opportunity_title                 text                        
+    opportunity_subtitle              text                        
+    opportunity_description           text                        
+    opportunity_coverImageUrl         text                        
+    opportunity_type                  text                        
+    opportunity_difficulty            text                        
+    opportunity_duration              integer                     
+    opportunity_location              text                        
+    opportunity_startTime             integer                     
+    opportunity_endTime               integer                     
+    opportunity_containsRun           integer                     
+    opportunity_showLabel             integer                     
+    opportunity_label                 text                        
+    opportunity_isNew                 integer                     
+    opportunity_url                   text                        
+    opportunity_trainer_id            text                        
+    opportunity_trainer_name          text                        
+    opportunity_trainer_profileImageUrl  text                        
+    opportunity_trainer_location      text                        
+    opportunity_trainer_following     integer                     
+    opportunity_trainer_followers     integer                     
+    opportunity_trainer_state         text                        
+    opportunity_trainer_about         text                        
+    opportunity_trainer_instagramImageUrls  text                        
+    opportunity_goal_id               text                        
+    opportunity_goal_name             text                        
+    opportunity_goal_selected         integer                     
+    opportunity_goal_description      text                        
+}
+
+
+Table completed_exercises {
+    id text [pk, not null]
+    exerciseId                        text                        
+    startTime                         integer                     
+    endTime                           integer                     
+    duration                          real [not null]               
+    score                             integer [not null]            
+    calories                          integer                     
+    completedWorkoutId                text                        
+    city                              text                        
+    country                           text                        
+    distanceInMeters                  real                        
+    distance                          real                        
+    maxAltitude                       real                        
+    minAltitude                       real                        
+    meanAltitude                      real                        
+    maxSpeed                          real                        
+    meanSpeed                         real                        
+    averageTimePerKm                  real                        
+    steps                             integer                     
+    userCreated                       integer [not null]            
+    modifiedAt                        integer                     
+    startTimeModified                 integer                     
+    endTimeModified                   integer                     
+    distanceModified                  real                        
+    distanceInMetersModified          real                        
+    durationModified                  real                        
+    caloriesModified                  integer                     
+    meanSpeedModified                 real                        
+    averageTimePerKmModified          real                        
+    mode                              text                        
+    runLocationType                   text                        
+    modeModified                      text                        
+    runLocationTypeModified           text                        
+    currentPace                       real [not null]               
+    oldDistance                       real [not null]               
+    isRun                             integer [not null]            
+    last_position_lat                 real                        
+    last_position_lng                 real 
+}
+
+Table completed_workouts {
+    id text [pk, not null]
+    workoutId                         text                        
+    startTime                         integer [not null]            
+    duration                          real [not null]               
+    score                             integer [not null]            
+    calories                          integer                     
+    endTime                           integer                     
+    isFinished                        integer [not null]            
+    isSynced                          integer [not null]            
+    mode                              text                        
+    scheduledWorkoutId                text                        
+    userCreated                       integer [not null]            
+    modifiedAt                        integer                     
+    modeModified                      text                        
+    startTimeModified                 integer                     
+    endTimeModified                   integer                     
+    durationModified                  real                        
+    distanceModified                  real                        
+    caloriesModified                  integer                     
+    groupId                           text                        
+    isConfirmedForSync                integer                     
+    workout_minClientVersion          text                        
+    workout_introVideoUrl             text                        
+    workout_favourited                integer                     
+    workout_date                      integer                     
+    workout_tracScore                 integer                     
+    workout_streaming                 integer                     
+    workout_infotextTitle             text                        
+    workout_bottomActionEndtext       text                        
+    workout_id                        text                        
+    workout_title                     text                        
+    workout_subtitle                  text                        
+    workout_description               text                        
+    workout_coverImageUrl             text                        
+    workout_type                      text                        
+    workout_difficulty                text                        
+    workout_duration                  integer                     
+    workout_location                  text                        
+    workout_startTime                 integer                     
+    workout_endTime                   integer                     
+    workout_containsRun               integer                     
+    workout_showLabel                 integer                     
+    workout_label                     text                        
+    workout_isNew                     integer                     
+    workout_url                       text                        
+    workout_trainer_id                text                        
+    workout_trainer_name              text                        
+    workout_trainer_profileImageUrl   text                        
+    workout_trainer_location          text                        
+    workout_trainer_following         integer                     
+    workout_trainer_followers         integer                     
+    workout_trainer_state             text                        
+    workout_trainer_about             text                        
+    workout_trainer_instagramImageUrls  text                        
+    workout_goal_id                   text                        
+    workout_goal_name                 text                        
+    workout_goal_selected             integer                     
+    workout_goal_description          text                        
+    opportunity_id                    text                        
+    opportunity_title                 text                        
+    opportunity_subtitle              text                        
+    opportunity_description           text                        
+    opportunity_coverImageUrl         text                        
+    opportunity_type                  text                        
+    opportunity_difficulty            text                        
+    opportunity_duration              integer                     
+    opportunity_location              text                        
+    opportunity_startTime             integer                     
+    opportunity_endTime               integer                     
+    opportunity_containsRun           integer                     
+    opportunity_showLabel             integer                     
+    opportunity_label                 text                        
+    opportunity_isNew                 integer                     
+    opportunity_url                   text                        
+    opportunity_trainer_id            text                        
+    opportunity_trainer_name          text                        
+    opportunity_trainer_profileImageUrl  text                        
+    opportunity_trainer_location      text                        
+    opportunity_trainer_following     integer                     
+    opportunity_trainer_followers     integer                     
+    opportunity_trainer_state         text                        
+    opportunity_trainer_about         text                        
+    opportunity_trainer_instagramImageUrls  text                        
+    opportunity_goal_id               text                        
+    opportunity_goal_name             text                        
+    opportunity_goal_selected         integer                     
+    opportunity_goal_description      text 
+}
+
+Table positions {
+    id text [pk, not null]
+    lat                               real [not null]                 
+    lng                               real [not null]                 
+    speed                             real [not null]                 
+    height                            real [not null]                 
+    accuracyX                         real [not null]                 
+    accuracyY                         real                        
+    "timestamp"                       integer [not null]              
+    isPaused                          integer                     
+    completedExerciseId               text  
+}
+
+Table heart_beats {
+    id text [pk, not null]
+    heartbeat                         real [not null]              
+    "timestamp"                       integer [not null]            
+    isPaused                          integer                    
+    completedExerciseId               text  
+}
+
+Ref: calendar.completedWorkoutId - completed_workouts.id
+Ref: completed_workouts.id < completed_exercises.completedWorkoutId
+Ref: positions.completedExerciseId < completed_exercises.id
+Ref: heart_beats.completedExerciseId < completed_exercises.id

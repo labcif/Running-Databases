@@ -1,0 +1,149 @@
+Table trips {
+    _id int [pk, increment]
+    activity_type text
+    uuid text
+    ext_trip_id text
+    start_date double
+    name text
+    distance double
+    elapsed_time double
+    should_sync bool
+    is_synced bool
+    deleted bool
+    training_activity_id int
+    training_activity_interval_index int
+    training_activity_interval_value int
+    training_activity_interval_start_value int
+    training_activity_repetition int
+    manual bool
+    training_activity_interval_start_distance double
+    gym_equipment bool
+    calories double
+    heart_rate double
+    route_id int
+    notes text
+    training_workout_id int
+    scheduled_class_id int
+    gym_equipment_type int
+    web_sync_time int
+    device_sync_time int
+    is_skeleton int
+    training_session_id int
+    tags text
+    utcOffset int
+    hasPoints int
+    totalClimb double
+    startTimeFromElapsedRealTime double
+    needsPointsFromServer bool [not null]
+    trackingMode int [not null]
+    needs_watch_sync bool [not null]
+    external_gps_associated bool [not null]
+    using_external_points bool [not null]
+    nikeFuelTotal double [not null]
+    temperature_celsius double
+    apparent_temperature_celsius double
+    weather_conditions text 
+    humidity double
+    wind_speed_mps double
+    wind_bearing_degrees double
+    nickname text
+    feedbackChoice int
+    has_step_data int
+    gps_correction int
+    fitness_class_id text
+    fitness_class_end_time int
+    virtualEventUUID text
+    virtualRaceUUID text
+    adjustedRaceTime double
+}
+
+Table points {
+    _id int [pk, increment]
+    trip_id int
+    ext_point_id text
+    has_been_sent bool
+    latitude double
+    longitude double
+    altitude double
+    time_at_point int
+    time_interval_at_point double
+    speed_from_last_point double
+    distance_from_last_point double
+    point_type int
+    accuracy double
+    distance_at_point double
+    split_type int
+    heartRate int
+    time_interval_at_point_ms int
+    point_source int
+    point_type_before_filter int [not null]
+    trip_uuid text
+}
+
+Table status_updates {
+    status_id int [pk, increment]
+    trip_id int
+    note text
+    haslmage bool
+    sent bool
+    latitude double
+    longitude double
+    "timestamp" double
+    image_content_provider_id int
+    hero_photo int
+    image_uri text
+    trip_uuid text
+    photo_url text
+}
+
+Table trip_settings {
+    _id int [pk, increment]
+    trip_id int
+    setting_key text
+    setting_value text
+}
+
+Table training_session {
+    _id int [pk, increment]
+    trip_uuid text
+    training_class_id int
+    description text
+    nutrition_info text
+    day_offset int
+    session_number int
+    customized int
+    training_workout_id int
+    summary text
+    completion_type int
+}
+
+Table routes {
+    _id int [pk, increment]
+    activity_type int
+    name text
+    distance double
+}
+
+Ref: trips._id < points.trip_id
+Ref: trips._id < status_updates.trip_id
+Ref: trips._id < trip_settings.trip_id
+Ref: trips.uuid > training_session.trip_uuid
+Ref: trips.activity_type > routes.activity_type
+
+Table route_activities {
+    _id int [pk, increment]
+    route_id int
+    start_date double
+    duration double
+    pace double
+}
+
+Table route_points {
+    _id int [pk, increment]
+    route_id int
+    latitude double
+    longitude double
+}
+
+Ref: routes._id < route_activities.route_id
+Ref: routes._id < route_points.route_id
